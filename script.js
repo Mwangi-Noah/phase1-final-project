@@ -42,13 +42,11 @@ function getAllCountries(country){
     .then(countryData => countryData.forEach(country => renderOneCountry(country)));
 }
 //Creating the search functionalities
-const searchBtn = document.getElementById('search');
-const countryInput = document.getElementById('country-input');
-
+let searchBtn = document.querySelector('#search');
+let countryInput = document.getElementById('country-input');
 searchBtn.addEventListener("click", () => {
     let countryName = countryInput.value;
     let countryURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
-    console.log(countryURL);
     fetch(countryURL)
         .then((response) => response.json())
         .then((data) => showModal(data));
@@ -66,40 +64,41 @@ function showModal(data) {
             <div class="data-wrapper">
                 <h4>Capital:</h4>
                 <span>${data[0].capital[0]}</span>
+                </div>
             </div>
-        </div>
         <div class="wrapper">
             <div class="data-wrapper">
                 <h4>Continent:</h4>
                 <span>${data[0].continents[0]}</span>
+                </div>
             </div>
-        </div>
-        <div class="wrapper">
-            <div class="data-wrapper">
-            <h4>Population:</h4>
-            <span>${data[0].population}</span>
+             <div class="wrapper">
+                <div class="data-wrapper">
+                    <h4>Population:</h4>
+                    <span>${data[0].population}</span>
+                </div>
             </div>
-        </div>
-        <div class="wrapper">
-            <div class="data-wrapper">
-                <h4>Currency:</h4>
-                <span>${
+            <div class="wrapper">
+                <div class="data-wrapper">
+                    <h4>Currency:</h4>
+                    <span>${
                       data[0].currencies[Object.keys(data[0].currencies)].name
                     } - ${Object.keys(data[0].currencies)[0]}</span>
+                </div>
             </div>
-        </div>
-        <div class="wrapper">
-            <div class="data-wrapper">
-                 <h4>Common Languages:</h4>
-                <span>${Object.values(data[0].languages)
+             <div class="wrapper">
+                <div class="data-wrapper">
+                    <h4>Common Languages:</h4>
+                    <span>${Object.values(data[0].languages)
                       .toString()
                       .split(",")
                       .join(", ")}</span>
+                </div>
             </div>
-        </div>
             `;
         document.querySelector('#modal-body').appendChild(modalData)
         
+        modal.style.display = "block";
         span.onclick = function() {
             modal.style.display = "none";
           }
