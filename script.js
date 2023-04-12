@@ -45,6 +45,7 @@ function getAllCountries(country){
 let searchBtn = document.querySelector('#search');
 let countryInput = document.getElementById('country-input');
 searchBtn.addEventListener("click", () => {
+    
     let countryName = countryInput.value;
     let countryURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
     fetch(countryURL)
@@ -97,8 +98,21 @@ function showModal(data) {
             </div>
             `;
         document.querySelector('#modal-body').appendChild(modalData)
-        
+        //The line below will load the modal on click (its the main function of this whole section)
         modal.style.display = "block";
+        //Setting up the comment event listener
+        const reviews = document.getElementById("review-list");
+        const reviewsForm = document.getElementById("review-form");
+        reviewsForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let reviewUpdate = document.getElementById('review');
+            let text = reviewUpdate.value;
+            let li = document.createElement('li');
+            li.innerHTML = text;
+            reviews.appendChild(li);
+         })
+         
         span.onclick = function() {
             modal.style.display = "none";
           }
