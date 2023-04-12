@@ -10,11 +10,32 @@
     />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
   <body>
     <div class="topnav">
       <a class="active" href="#home">Home</a>
-      <input type="text" placeholder="Search..">
+      <div class="search-container">
+          <input type="text" placeholder="Search.." id="country-input">
+          <button type="submit" id="search"><i class="fa fa-search"></i></button>
+      </div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Modal Header</h2>
+          </div>
+          <div id="modal-body" class ="modally">
+            
+          </div>
+          <div class="modal-footer">
+            <h3>Countries</h3>
+          </div>
+        </div>
+        </div>
     </div>
 
     <div id="main-container" class ="parent">
