@@ -1,0 +1,11 @@
+.parent{
+    display: grid;
+    grid-template-columns: auto auto auto; 
+}
+.child{
+    padding: 5px;
+    box-sizing: border-box;
+}
+.child img{
+   width: 100%;
+}
