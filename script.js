@@ -3,7 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
 })
 
-//DOM render functions
+//Declare the global variables
+let selectRegion = document.getElementById("reg-input");
+
+//Using fetch to load the countries database
+function getAllCountries(country){
+    fetch(`https://restcountries.com/v3.1/all`)
+    .then(res => res.json())
+    .then(countryData => countryData.forEach(country => renderOneCountry(country)));
+}
+
+//DOM render functions, create a card containing details of one country
 
 function renderOneCountry(country) {
     //Build a single country
@@ -31,16 +41,23 @@ function renderOneCountry(country) {
         </div>
     </div>
     `
-    //mainContainer.appendChild(card)
     //Add country card to DOM
     document.querySelector('#main-container').appendChild(card)
-   //Using fetch to load the countries database 
+   
 }
-function getAllCountries(country){
-    fetch(`https://restcountries.com/v3.1/all`)
+//Create event listeners to listen to change in the dropdown menu
+selectRegion.addEventListener('change', (event) => {
+    inputText = event.target.value;
+    console.log(event.target.value)
+    console.log(inputText)
+    fetch(`https://restcountries.com/v3.1/region/${inputText}`)
     .then(res => res.json())
-    .then(countryData => countryData.forEach(country => renderOneCountry(country)));
-}
+    .then(countryData => {
+        document.querySelector('#main-container').innerHTML="";
+        countryData.forEach(country => renderOneCountry(country))});
+
+})
+
 //Creating the search functionalities
 let searchBtn = document.querySelector('#search');
 let countryInput = document.getElementById('country-input');
