@@ -34,7 +34,7 @@ function renderOneCountry(country) {
     //mainContainer.appendChild(card)
     //Add country card to DOM
     document.querySelector('#main-container').appendChild(card)
-    
+   //Using fetch to load the countries database 
 }
 function getAllCountries(country){
     fetch(`https://restcountries.com/v3.1/all`)
